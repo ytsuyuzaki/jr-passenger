@@ -1,7 +1,9 @@
+require_relative 'lib/passenger_parser'
+require 'rake/testtask'
+
 namespace :json do
   desc "乗車人員のjsonファイル作成"
   task :create do
-    require 'nokogiri'
     require 'open-uri'
     require 'json'
     urls = {
@@ -21,25 +23,20 @@ namespace :json do
       '1999' => 'http://www.jreast.co.jp/passenger/1999.html',
     }
 
-    urls.each do |year,url|
-      doc = Nokogiri::HTML.parse(open(url))
-      trs = []
-      doc.xpath('//tr[td[@class="text-m" and @bgcolor="#ffffff"]]').each do |tr|
-        tds = {}
-        tr.xpath('td').each_with_index do |td,count|
-          tds[:rank] = td.text if 0 == count
-          tds[:city] = td.text.strip if 1 == count
-          if url == 'http://www.jreast.co.jp/passenger/'
-            tds[:total] = td.text.delete(',').to_i if 4 == count
-          else
-            tds[:total] = td.text.delete(',').to_i if 2 == count
-          end
-        end
-        trs << tds
-      end
+    urls.each do |year, url|
+      html_content = open(url).read
+      trs = PassengerParser.parse(html_content, url)
       open("source/javascripts/json/#{year}.json", 'w') do |io|
         JSON.dump(trs, io)
       end
     end
   end
 end
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'test'
+  t.test_files = FileList['test/**/*_test.rb']
+  t.verbose = true
+end
+
+task default: :test

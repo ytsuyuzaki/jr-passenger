@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head><title>JR East Passenger 2012</title></head>
+<body>
+<table>
+  <thead>
+    <tr><th>Rank</th><th>Station</th><th>Line</th><th>Area</th><th>Total</th></tr>
+  </thead>
+  <tbody>
+    <!-- Rows without matching tds should be ignored -->
+    <tr><td class="header">Header row</td></tr>
+
+    <!-- rank=1: 新宿, total=742,833 (col4) -->
+    <tr>
+      <td class="text-m" bgcolor="#ffffff">1</td>
+      <td class="text-m" bgcolor="#ffffff">新宿</td>
+      <td class="text-m" bgcolor="#ffffff">JR</td>
+      <td class="text-m" bgcolor="#ffffff">Tokyo</td>
+      <td class="text-m" bgcolor="#ffffff">742,833</td>
+    </tr>
+
+    <!-- rank=2: 池袋, total=550,756 (col4) -->
+    <tr>
+      <td class="text-m" bgcolor="#ffffff">2</td>
+      <td class="text-m" bgcolor="#ffffff">池袋</td>
+      <td class="text-m" bgcolor="#ffffff">JR</td>
+      <td class="text-m" bgcolor="#ffffff">Tokyo</td>
+      <td class="text-m" bgcolor="#ffffff">550,756</td>
+    </tr>
+
+    <!-- rank=3: city with leading/trailing whitespace, to test stripping -->
+    <tr>
+      <td class="text-m" bgcolor="#ffffff">3</td>
+      <td class="text-m" bgcolor="#ffffff">  渋谷  </td>
+      <td class="text-m" bgcolor="#ffffff">JR</td>
+      <td class="text-m" bgcolor="#ffffff">Tokyo</td>
+      <td class="text-m" bgcolor="#ffffff">412,009</td>
+    </tr>
+
+    <!-- rank=4: small number, no comma -->
+    <tr>
+      <td class="text-m" bgcolor="#ffffff">4</td>
+      <td class="text-m" bgcolor="#ffffff">東京</td>
+      <td class="text-m" bgcolor="#ffffff">JR</td>
+      <td class="text-m" bgcolor="#ffffff">Tokyo</td>
+      <td class="text-m" bgcolor="#ffffff">9876</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
