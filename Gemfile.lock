@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (8.1.2.1)
       base64
@@ -46,7 +46,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
-    json (2.19.4)
+    json (2.21.1)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     listen (3.10.0)
@@ -144,3 +144,6 @@ DEPENDENCIES
   nokogiri
   rake
   wdm (~> 0.1.0)
+
+BUNDLED WITH
+   2.4.19
